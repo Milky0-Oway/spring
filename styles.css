@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/metropolis-2');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: Metropolis, sans-serif;
+    font-family: 'Metropolis', sans-serif;
     color: #000;
 }
 
@@ -85,7 +86,7 @@ nav {
     padding: 0;
     text-decoration: none;
     color: black;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .dropdown li a:hover {
@@ -148,11 +149,13 @@ nav {
 
 .description {
     max-width: 1344px;
-    margin: 88px auto;
+    margin: 48px auto;
 }
 
 .description-header {
+    margin-top: 40px;
     font-size: 56px;
+    font-weight: bold;
 }
 
 .description-text {
@@ -196,4 +199,51 @@ nav {
 
 .description-button:hover {
     color: #fff;
+}
+
+.projects {
+    background-color: #ebf2f2;
+    padding: 48px 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1000px;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.item {
+    width: 500px;
+    padding: 30px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #d9e9e9;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+.item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.item img {
+    width: 120px;
+}
+
+.item-header {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.item-description {
+    font-family: 'Open Sans', sans-serif;
+    width: 350px;
+    font-size: 16px;
+    padding: 12px 0;
+    line-height: 1.7rem;
 }
