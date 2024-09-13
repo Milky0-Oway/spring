@@ -140,11 +140,11 @@
     filter: invert(1);
 }
 
-.switch-input:checked+.switch-label {
+.switch-input:checked + .switch-label {
     background-color: #333;
 }
 
-.switch-input:checked+.switch-label .switch-icon {
+.switch-input:checked + .switch-label .switch-icon {
     transform: translateX(12px);
     background-image: url('./images/moon.svg');
     filter: invert(0);
