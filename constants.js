@@ -1,3 +1,64 @@
+export const menu = [
+    {
+        point: 'Why Spring',
+        subpoints: [
+            'Overview',
+            'Microservices',
+            'Reactive',
+            'Event Driven',
+            'Cloud',
+            'Web Applications',
+            'Serverless',
+            'Batch',
+        ],
+        additional: false,
+    },
+    {
+        point: 'Learn',
+        subpoints: ['Overview', 'Quickstart', 'Guides', 'Blog'],
+        additional: false,
+    },
+    {
+        point: 'Projects',
+        subpoints: [
+            'Overview',
+            'Spring Boot',
+            'Spring Framework',
+            'Spring Cloud',
+            'Spring Cloud Data Flow',
+            'Spring Data',
+            'Spring Integration',
+            'Spring Batch',
+            'Spring Security',
+            'View all projects',
+        ],
+        additional: true,
+        additionalPoint: 'DEVELOPMENT TOOLS',
+        additionalSubpoints: ['Spring Tools 4', 'Spring Initializr'],
+    },
+    {
+        point: 'Academy',
+        subpoints: ['Courses', 'Get Certified'],
+        additional: false,
+    },
+    {
+        point: 'Solutions',
+        subpoints: [
+            'Overview',
+            'Tanzu Spring',
+            'Spring Consulting',
+            'Spring Academy For Teams',
+            'Security Advisories',
+        ],
+        additional: false,
+    },
+    {
+        point: 'Community',
+        subpoints: ['Overview', 'Events', 'Authors'],
+        additional: false,
+    },
+];
+
 export const projects = [
     {
         name: 'Spring Boot',
