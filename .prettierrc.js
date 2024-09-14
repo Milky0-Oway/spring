@@ -6,4 +6,4 @@ module.exports = {
     bracketSpacing: true,
     arrowParens: 'always',
     printWidth: 100,
-}
+};

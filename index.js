@@ -1,8 +1,13 @@
 import { projects, menu } from '/constants.js';
 
-function displayMenu() {
-    const menuContainer = document.querySelector('.menu');
+const menuContainer = document.querySelector('.menu');
+const menuIcon = document.querySelector('.menu-icon');
+menuIcon.addEventListener('click', () => {
+    menuContainer.classList.toggle('open');
+    menuIcon.classList.toggle('open');
+});
 
+function displayMenu() {
     menu.forEach((item) => {
         const menuElement = document.createElement('li');
         menuElement.classList.add('menu-item');
@@ -87,6 +92,20 @@ function displayMenu() {
     themeSwitcherContainer.appendChild(themeSwitcher);
 
     menuContainer.appendChild(themeSwitcherContainer);
+
+    document.querySelectorAll('.menu-link').forEach((link) => {
+        link.addEventListener('click', function () {
+            const item = this.parentElement;
+
+            document.querySelectorAll('.menu-item').forEach((otherItem) => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            item.classList.toggle('active');
+        });
+    });
 }
 
 function displayProjects() {
