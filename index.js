@@ -1,13 +1,39 @@
-import { projects, menu } from '/constants.js';
+import { projects, menu, footerLinks } from '/constants.js';
 
-const menuContainer = document.querySelector('.menu');
-const menuIcon = document.querySelector('.menu-icon');
-menuIcon.addEventListener('click', () => {
-    menuContainer.classList.toggle('open');
-    menuIcon.classList.toggle('open');
+let items = [];
+const searchInput = document.getElementById('search-input');
+const noResults = document.querySelector('.no-results');
+
+function filterItems(query) {
+    let hasResults = false;
+    items.forEach((item) => {
+        const title = item.querySelector('.item-header').textContent.toLowerCase();
+        const description = item.querySelector('.item-text').textContent.toLowerCase();
+
+        if (title.includes(query) || description.includes(query)) {
+            item.classList.remove('hidden');
+            hasResults = true;
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+
+    noResults.style.display = hasResults ? 'none' : 'block';
+}
+
+let searchTimeout;
+searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+
+    searchTimeout = setTimeout(() => {
+        const query = searchInput.value.toLowerCase().trim();
+        filterItems(query);
+    }, 300);
 });
 
 function displayMenu() {
+    const menuContainer = document.querySelector('.menu');
+
     menu.forEach((item) => {
         const menuElement = document.createElement('li');
         menuElement.classList.add('menu-item');
@@ -108,6 +134,15 @@ function displayMenu() {
     });
 }
 
+function toggleMenu() {
+    const menuContainer = document.querySelector('.menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    menuIcon.addEventListener('click', () => {
+        menuContainer.classList.toggle('open');
+        menuIcon.classList.toggle('open');
+    });
+}
+
 function displayProjects() {
     const projectContainer = document.querySelector('.items-container');
 
@@ -138,9 +173,49 @@ function displayProjects() {
 
         projectContainer.appendChild(projectElement);
     });
+
+    items = document.querySelectorAll('.item');
+}
+
+function displayFooterLinks() {
+    const linksContainer = document.querySelector('.links-container');
+
+    footerLinks.forEach((linkList) => {
+        const linksWrapper = document.createElement('div');
+        linksWrapper.classList.add('links-wrapper');
+
+        linkList.forEach((links) => {
+            const list = document.createElement('ul');
+            list.classList.add('links');
+
+            links.forEach((linkInfo) => {
+                const linkItem = document.createElement('li');
+                linkItem.classList.add('link-item');
+
+                const link = document.createElement('a');
+                link.classList.add('link');
+                link.href = '#';
+                link.textContent = linkInfo.name;
+
+                if (linkInfo.bold === true) {
+                    link.classList.add('link--bold');
+                }
+
+                linkItem.appendChild(link);
+
+                list.appendChild(linkItem);
+            });
+
+            linksWrapper.appendChild(list);
+        });
+
+        linksContainer.appendChild(linksWrapper);
+    });
 }
 
 window.onload = function () {
     displayMenu();
+    toggleMenu();
     displayProjects();
+    displayFooterLinks();
 };

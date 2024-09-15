@@ -97,3 +97,118 @@ export const projects = [
         image: 'images/spring-security.svg',
     },
 ];
+
+export const footerLinks = [
+    [
+        [
+            {
+                name: 'Why Spring',
+                bold: true,
+            },
+            {
+                name: 'Microservices',
+                bold: false,
+            },
+            {
+                name: 'Reactive',
+                bold: false,
+            },
+            {
+                name: 'Event Driven',
+                bold: false,
+            },
+            {
+                name: 'Cloud',
+                bold: false,
+            },
+            {
+                name: 'Web Applications',
+                bold: false,
+            },
+            {
+                name: 'Serverless',
+                bold: false,
+            },
+            {
+                name: 'Batch',
+                bold: false,
+            },
+        ],
+    ],
+    [
+        [
+            {
+                name: 'Learn',
+                bold: true,
+            },
+            {
+                name: 'Quickstart',
+                bold: false,
+            },
+            {
+                name: 'Guides',
+                bold: false,
+            },
+            {
+                name: 'Blog',
+                bold: false,
+            },
+        ],
+        [
+            {
+                name: 'Community',
+                bold: true,
+            },
+            {
+                name: 'Events',
+                bold: false,
+            },
+            {
+                name: 'Authors',
+                bold: false,
+            },
+        ],
+    ],
+    [
+        [
+            {
+                name: 'Solutions',
+                bold: true,
+            },
+            {
+                name: 'Tanzu Spring',
+                bold: false,
+            },
+            {
+                name: 'Spring Consulting',
+                bold: false,
+            },
+            {
+                name: 'Spring Academy For Teams',
+                bold: false,
+            },
+            {
+                name: 'Spring Advisories',
+                bold: false,
+            },
+        ],
+    ],
+    [
+        [
+            {
+                name: 'Projects',
+                bold: true,
+            },
+            {
+                name: 'Training',
+                bold: true,
+            },
+        ],
+        [
+            {
+                name: 'Thank you',
+                bold: true,
+            },
+        ],
+    ],
+];
