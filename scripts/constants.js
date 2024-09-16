@@ -1,4 +1,4 @@
-export const menu = [
+export const MENU = [
     {
         point: 'Why Spring',
         subpoints: [
@@ -59,7 +59,7 @@ export const menu = [
     },
 ];
 
-export const projects = [
+export const PROJECTS = [
     {
         name: 'Spring Boot',
         description:
@@ -98,7 +98,7 @@ export const projects = [
     },
 ];
 
-export const footerLinks = [
+export const FOOTER_LINKS = [
     [
         [
             {
