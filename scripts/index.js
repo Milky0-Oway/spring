@@ -11,8 +11,5 @@ window.onload = function () {
     displayProjects();
     displayFooterLinks();
 
-    // const items = document.querySelectorAll('.item');
-    // searchInput.addEventListener('input', () => debounceSearch(items));
-
     searchInput.addEventListener('input', () => debounceSearch());
 };

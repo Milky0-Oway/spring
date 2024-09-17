@@ -51,6 +51,15 @@ export function createMenuItem(item) {
     }
 
     menuElement.appendChild(menuSubpoints);
+
+    menuElement.addEventListener('mouseenter', () => {
+        menuElement.querySelector('.dropdown').classList.add('dropdown--active');
+    });
+
+    menuElement.addEventListener('mouseleave', () => {
+        menuElement.querySelector('.dropdown').classList.remove('dropdown--active');
+    });
+
     return menuElement;
 }
 
@@ -69,13 +78,22 @@ export function displayMenu() {
 
     menuContainer.addEventListener('click', function (e) {
         if (e.target.classList.contains('menu-link')) {
-            const item = e.target.parentElement;
-            document.querySelectorAll('.menu-item').forEach((otherItem) => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
+            const item = e.target.parentElement.querySelector('.dropdown');
+
+            document.querySelectorAll('.menu-link--active').forEach((link) => {
+                if (e.target !== link) {
+                    link.classList.remove('menu-link--active');
                 }
             });
-            item.classList.toggle('active');
+
+            e.target.classList.toggle('menu-link--active');
+
+            document.querySelectorAll('.dropdown').forEach((otherItem) => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('dropdown-mobile--active');
+                }
+            });
+            item.classList.toggle('dropdown-mobile--active');
         }
     });
 }
@@ -84,7 +102,7 @@ export function toggleMenu() {
     const menuContainer = document.querySelector('.menu');
     const menuIcon = document.querySelector('.menu-icon');
     menuIcon.addEventListener('click', () => {
-        menuContainer.classList.toggle('open');
-        menuIcon.classList.toggle('open');
+        menuContainer.classList.toggle('menu--open');
+        menuIcon.classList.toggle('menu-icon--open');
     });
 }

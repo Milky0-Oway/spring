@@ -1,5 +1,3 @@
-//import { PROJECTS } from './constants.js';
-
 async function fetchProjects() {
     const response = await fetch('https://fakestoreapi.com/products');
     if (!response.ok) {
@@ -50,11 +48,6 @@ export async function displayProjects() {
         const projectElement = createProjectElement(project);
         fragment.appendChild(projectElement);
     });
-
-    // PROJECTS.forEach((project) => {
-    //     const projectElement = createProjectElement(project);
-    //     fragment.appendChild(projectElement);
-    // });
 
     projectContainer.appendChild(fragment);
 }
