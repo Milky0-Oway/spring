@@ -2,8 +2,9 @@ const searchInput = document.querySelector('.search-input');
 const noResults = document.querySelector('.no-results');
 const DEBOUNCE_DELAY = 300;
 
-function filterItems(query, items) {
+function filterItems(query) {
     let hasResults = false;
+    const items = document.querySelectorAll('.item');
     items.forEach((item) => {
         const title = item.querySelector('.item-header').textContent.toLowerCase();
         const description = item.querySelector('.item-text').textContent.toLowerCase();
@@ -20,10 +21,10 @@ function filterItems(query, items) {
 }
 
 let searchTimeout;
-export function debounceSearch(items) {
+export function debounceSearch() {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
         const query = searchInput.value.toLowerCase().trim();
-        filterItems(query, items);
+        filterItems(query);
     }, DEBOUNCE_DELAY);
 }

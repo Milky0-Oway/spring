@@ -1,4 +1,17 @@
-import { PROJECTS } from './constants.js';
+//import { PROJECTS } from './constants.js';
+
+async function fetchProjects() {
+    const response = await fetch('https://fakestoreapi.com/products');
+    if (!response.ok) {
+        throw new Error('Failed to fetch projects');
+    }
+    const products = await response.json();
+    return products.map((product) => ({
+        name: product.title,
+        description: product.description,
+        image: product.image,
+    }));
+}
 
 export function createProjectElement(project) {
     const projectElement = document.createElement('div');
@@ -27,14 +40,21 @@ export function createProjectElement(project) {
     return projectElement;
 }
 
-export function displayProjects() {
+export async function displayProjects() {
     const projectContainer = document.querySelector('.items-container');
     const fragment = document.createDocumentFragment();
 
-    PROJECTS.forEach((project) => {
+    const projects = await fetchProjects();
+
+    projects.forEach((project) => {
         const projectElement = createProjectElement(project);
         fragment.appendChild(projectElement);
     });
+
+    // PROJECTS.forEach((project) => {
+    //     const projectElement = createProjectElement(project);
+    //     fragment.appendChild(projectElement);
+    // });
 
     projectContainer.appendChild(fragment);
 }
