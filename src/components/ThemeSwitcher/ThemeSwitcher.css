@@ -45,3 +45,9 @@
     background-image: url('../../images/moon.svg');
     filter: invert(0);
 }
+
+@media (max-width: 900px) {
+    .theme-switcher {
+        display: none;
+    }
+}

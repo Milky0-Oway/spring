@@ -1,19 +1,14 @@
-import springLogo from './images/spring-logo.png';
-import './App.css';
-import { Menu } from './components/Menu/Menu';
 import { Description } from './components/Description/Description';
+import { Projects } from './components/Projects/Projects';
+import { Header } from './components/Header/Header';
 
 function App() {
     return (
         <>
-            <header className="header">
-                <img src={springLogo} alt="Logo" className="header-img" />
-                <nav className="nav">
-                    <Menu />
-                </nav>
-            </header>
+            <Header />
             <main>
-                <Description/>
+                <Description />
+                <Projects />
             </main>
         </>
     );
