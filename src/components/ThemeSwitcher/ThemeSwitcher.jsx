@@ -22,7 +22,7 @@ export const ThemeSwitcher = () => {
     return (
         <li className="menu-item">
             <div className="theme-switcher">
-                <input type="checkbox" id="switch" className="switch-input" checked={isActive} />
+                <input type="checkbox" id="switch" className="switch-input" />
                 <label htmlFor="switch" className={switchLabelClass} onClick={handleThemeToggle}>
                     <span className={switchIconClass} />
                 </label>

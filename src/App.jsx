@@ -1,6 +1,7 @@
 import springLogo from './images/spring-logo.png';
 import './App.css';
 import { Menu } from './components/Menu/Menu';
+import { Description } from './components/Description/Description';
 
 function App() {
     return (
@@ -11,6 +12,9 @@ function App() {
                     <Menu />
                 </nav>
             </header>
+            <main>
+                <Description/>
+            </main>
         </>
     );
 }
