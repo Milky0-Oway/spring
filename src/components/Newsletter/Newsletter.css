@@ -1,0 +1,30 @@
+.newsletter {
+    border: 2px solid #d9e9e9;
+    width: fit-content;
+    height: 140px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.newsletter-header {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.newsletter-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    .newsletter-header {
+        font-size: 20px;
+    }
+
+    .newsletter {
+        height: 150px;
+        gap: 8px;
+    }
+}
