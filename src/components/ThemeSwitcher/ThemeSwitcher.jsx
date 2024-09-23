@@ -18,7 +18,9 @@ export const ThemeSwitcher = () => {
                     onClick={handleThemeToggle}
                     aria-pressed={isActive}
                 >
-                    <span className={classNames('switch-icon', { 'switch-icon--active': isActive })} />
+                    <span
+                        className={classNames('switch-icon', { 'switch-icon--active': isActive })}
+                    />
                 </button>
             </div>
         </li>

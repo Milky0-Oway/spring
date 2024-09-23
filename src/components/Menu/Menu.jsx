@@ -34,11 +34,11 @@ export const Menu = () => {
                 ))}
                 <ThemeSwitcher />
             </ul>
-            <span
+            <button
                 className={classNames('menu-icon', { 'menu-icon--open': isMenuOpen })}
                 onClick={toggleMenu}
                 style={{ backgroundImage: `url(${isMenuOpen ? crossIcon : menuIcon})` }}
-            ></span>
+            ></button>
         </>
     );
 };

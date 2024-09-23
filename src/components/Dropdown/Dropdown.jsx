@@ -10,10 +10,12 @@ export const Dropdown = ({
     isClicked,
 }) => {
     return (
-        <ul className={classNames('dropdown', {
-            'dropdown--active': isHovered,
-            'dropdown-mobile--active': isClicked,
-        })}>
+        <ul
+            className={classNames('dropdown', {
+                'dropdown--active': isHovered,
+                'dropdown-mobile--active': isClicked,
+            })}
+        >
             {subpoints.map((subpoint) => (
                 <li key={subpoint.id} className="dropdown-item">
                     <a className="dropdown-link" href="#">
