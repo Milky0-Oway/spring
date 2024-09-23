@@ -9,23 +9,17 @@ export const ThemeSwitcher = () => {
         setIsActive(!isActive);
     };
 
-    const switchLabelClass = classNames({
-        'switch-label': true,
-        'switch-label--active': isActive,
-    });
-
-    const switchIconClass = classNames({
-        'switch-icon': true,
-        'switch-icon--active': isActive,
-    });
-
     return (
         <li className="menu-item">
             <div className="theme-switcher">
-                <input type="checkbox" id="switch" className="switch-input" />
-                <label htmlFor="switch" className={switchLabelClass} onClick={handleThemeToggle}>
-                    <span className={switchIconClass} />
-                </label>
+                <button
+                    type="button"
+                    className={classNames('switch-label', { 'switch-label--active': isActive })}
+                    onClick={handleThemeToggle}
+                    aria-pressed={isActive}
+                >
+                    <span className={classNames('switch-icon', { 'switch-icon--active': isActive })} />
+                </button>
             </div>
         </li>
     );

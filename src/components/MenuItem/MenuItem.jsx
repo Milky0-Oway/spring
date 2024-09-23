@@ -19,11 +19,6 @@ export const MenuItem = ({ item, isActive, onToggle }) => {
         onToggle(item.point);
     };
 
-    const menuLinkClass = classNames({
-        'menu-link': true,
-        'menu-link--active': isActive,
-    });
-
     return (
         <li
             className="menu-item"
@@ -31,7 +26,7 @@ export const MenuItem = ({ item, isActive, onToggle }) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <a className={menuLinkClass} href="#">
+            <a className={classNames('menu-link', { 'menu-link--active': isActive })} href="#">
                 {item.point}
             </a>
             <Dropdown

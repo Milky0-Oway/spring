@@ -1,5 +1,5 @@
 import './Button.css';
 
-export const Button = ({ text }) => {
-    return <button className="description-button">{text}</button>;
+export const Button = ({ children }) => {
+    return <button className="description-button">{children}</button>;
 };

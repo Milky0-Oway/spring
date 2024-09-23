@@ -21,22 +21,12 @@ export const Menu = () => {
         }
     };
 
-    const menuIconClass = classNames({
-        'menu-icon': true,
-        'menu-icon--open': isMenuOpen,
-    });
-
-    const menuClass = classNames({
-        menu: true,
-        'menu--open': isMenuOpen,
-    });
-
     return (
         <>
-            <ul className={menuClass}>
-                {MENU.map((item, index) => (
+            <ul className={classNames('menu', { 'menu--open': isMenuOpen })}>
+                {MENU.map((item) => (
                     <MenuItem
-                        key={index}
+                        key={item.id}
                         item={item}
                         isActive={activeItem === item.point}
                         onToggle={handleItemToggle}
@@ -45,7 +35,7 @@ export const Menu = () => {
                 <ThemeSwitcher />
             </ul>
             <span
-                className={menuIconClass}
+                className={classNames('menu-icon', { 'menu-icon--open': isMenuOpen })}
                 onClick={toggleMenu}
                 style={{ backgroundImage: `url(${isMenuOpen ? crossIcon : menuIcon})` }}
             ></span>

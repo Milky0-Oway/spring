@@ -9,28 +9,25 @@ export const Dropdown = ({
     isHovered,
     isClicked,
 }) => {
-    const dropdownClass = classNames({
-        dropdown: true,
-        'dropdown--active': isHovered,
-        'dropdown-mobile--active': isClicked,
-    });
-
     return (
-        <ul className={dropdownClass}>
-            {subpoints.map((subpoint, index) => (
-                <li key={index} className="dropdown-item">
+        <ul className={classNames('dropdown', {
+            'dropdown--active': isHovered,
+            'dropdown-mobile--active': isClicked,
+        })}>
+            {subpoints.map((subpoint) => (
+                <li key={subpoint.id} className="dropdown-item">
                     <a className="dropdown-link" href="#">
-                        {subpoint}
+                        {subpoint.name}
                     </a>
                 </li>
             ))}
             {additional && (
                 <>
                     <li className="dropdown-item dropdown-item--spacing">{additionalPoint}</li>
-                    {additionalSubpoints.map((subpoint, index) => (
-                        <li key={index} className="dropdown-item">
+                    {additionalSubpoints.map((subpoint) => (
+                        <li key={subpoint.id} className="dropdown-item">
                             <a href="#" className="dropdown-link">
-                                {subpoint}
+                                {subpoint.name}
                             </a>
                         </li>
                     ))}

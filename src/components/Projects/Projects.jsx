@@ -7,7 +7,7 @@ const DEBOUNCE_DELAY = 300;
 export const Projects = () => {
     const [query, setQuery] = useState('');
     const [filteredItems, setFilteredItems] = useState(PROJECTS);
-    const [hasResults, setHasResults] = useState(true);
+    const isEmpty = filteredItems.length === 0;
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -19,7 +19,6 @@ export const Projects = () => {
             });
 
             setFilteredItems(results);
-            setHasResults(results.length > 0);
         }, DEBOUNCE_DELAY);
 
         return () => clearTimeout(handler);
@@ -40,10 +39,10 @@ export const Projects = () => {
                     placeholder="Search..."
                 />
             </div>
-            {!hasResults && <p className="no-results">No results found</p>}
+            {isEmpty && <p className="no-results">No results found</p>}
             <div className="items-container">
-                {filteredItems.map((item, index) => (
-                    <div key={index} className="item">
+                {filteredItems.map((item) => (
+                    <div key={item.id} className="item">
                         <img className="item-img" src={`./images/${item.image}`} alt="Item Icon" />
                         <div className="item-text">
                             <h3 className="item-header">{item.name}</h3>

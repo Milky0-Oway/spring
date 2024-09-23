@@ -6,7 +6,7 @@ export const Newsletter = () => {
         <div className="newsletter">
             <h1 className="newsletter-header">Get the Spring newsletter</h1>
             <p className="newsletter-text">Stay connected with the Spring newsletter</p>
-            <Button text={'Subscribe'} />
+            <Button>Subscribe</Button>
         </div>
     );
 };

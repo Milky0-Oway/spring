@@ -4,12 +4,12 @@ import { FOOTER_LINKS } from '../../constants/constants';
 export const Links = () => {
     return (
         <div className="links-container">
-            {FOOTER_LINKS.map((linkList, index) => (
-                <div key={index} className="links-wrapper">
-                    {linkList.map((links, index) => (
-                        <ul key={index} className="links">
-                            {links.map((linkInfo, index) => (
-                                <li key={index} className="link-item">
+            {FOOTER_LINKS.map((linkList) => (
+                <div key={linkList.id} className="links-wrapper">
+                    {linkList.array.map((links) => (
+                        <ul key={links.id} className="links">
+                            {links.array.map((linkInfo) => (
+                                <li key={linkInfo.id} className="link-item">
                                     <a
                                         className={`link ${linkInfo.bold ? 'link--bold' : ''}`}
                                         href="#"

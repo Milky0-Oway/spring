@@ -10,7 +10,7 @@ export const Description = () => {
                 needs of your application may be, there is a Spring Project to help you build it.
                 Start small and use just what you need—Spring is modular by design.
             </p>
-            <Button text={'Release calendar'} />
+            <Button>Release calendar</Button>
         </section>
     );
 };
