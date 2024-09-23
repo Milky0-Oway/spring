@@ -1,0 +1,57 @@
+.description {
+    max-width: 1344px;
+    margin: 48px auto;
+}
+
+.description-header {
+    margin-top: 40px;
+    font-size: 56px;
+    font-weight: 700;
+}
+
+.description-text {
+    width: 960px;
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+}
+
+@media (max-width: 1400px) {
+    .description {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .description,
+    .description-text {
+        width: 900px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .description,
+    .description-text {
+        width: 660px;
+    }
+}
+
+@media (max-width: 800px) {
+    .description {
+        width: 80%;
+    }
+
+    .description-text {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .description-header {
+        font-size: 48px;
+    }
+
+    .description-text {
+        font-size: 20px;
+    }
+}
