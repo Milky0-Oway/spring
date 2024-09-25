@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Dropdown } from '../Dropdown/Dropdown';
-import './MenuItem.css';
+import styles from './MenuItem.module.css';
 import classNames from 'classnames';
 
 export const MenuItem = ({ item, isActive, onToggle }) => {
@@ -21,12 +21,12 @@ export const MenuItem = ({ item, isActive, onToggle }) => {
 
     return (
         <li
-            className="menu-item"
+            className={styles["menu-item"]}
             onClick={handleClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <a className={classNames('menu-link', { 'menu-link--active': isActive })} href="#">
+            <a className={classNames(styles['menu-link'], { [styles['menu-link--active']]: isActive })} href="#">
                 {item.point}
             </a>
             <Dropdown

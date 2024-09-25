@@ -4,7 +4,7 @@ import { MENU } from '../../constants/constants';
 import { MenuItem } from '../MenuItem/MenuItem';
 import menuIcon from '../../images/menu.svg';
 import crossIcon from '../../images/cross.svg';
-import './Menu.css';
+import styles from './Menu.module.css';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 
 export const Menu = () => {
@@ -23,7 +23,7 @@ export const Menu = () => {
 
     return (
         <>
-            <ul className={classNames('menu', { 'menu--open': isMenuOpen })}>
+            <ul className={classNames(styles.menu, { [styles['menu--open']]: isMenuOpen })}>
                 {MENU.map((item) => (
                     <MenuItem
                         key={item.id}
@@ -35,7 +35,7 @@ export const Menu = () => {
                 <ThemeSwitcher />
             </ul>
             <button
-                className={classNames('menu-icon', { 'menu-icon--open': isMenuOpen })}
+                className={classNames(styles['menu-icon'], { [styles['menu-icon--open']]: isMenuOpen })}
                 onClick={toggleMenu}
                 style={{ backgroundImage: `url(${isMenuOpen ? crossIcon : menuIcon})` }}
             ></button>

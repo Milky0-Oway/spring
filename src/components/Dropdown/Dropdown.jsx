@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import './Dropdown.css';
+import styles from './Dropdown.module.css';
 
 export const Dropdown = ({
     subpoints,
@@ -11,24 +11,24 @@ export const Dropdown = ({
 }) => {
     return (
         <ul
-            className={classNames('dropdown', {
-                'dropdown--active': isHovered,
-                'dropdown-mobile--active': isClicked,
+            className={classNames(styles.dropdown, {
+                [styles['dropdown--active']]: isHovered,
+                [styles['dropdown-mobile--active']]: isClicked,
             })}
         >
             {subpoints.map((subpoint) => (
-                <li key={subpoint.id} className="dropdown-item">
-                    <a className="dropdown-link" href="#">
+                <li key={subpoint.id} className={styles["dropdown-item"]}>
+                    <a className={styles["dropdown-link"]} href="#">
                         {subpoint.name}
                     </a>
                 </li>
             ))}
             {additional && (
                 <>
-                    <li className="dropdown-item dropdown-item--spacing">{additionalPoint}</li>
+                    <li className={classNames(styles["dropdown-item"], styles["dropdown-item--spacing"])}>{additionalPoint}</li>
                     {additionalSubpoints.map((subpoint) => (
-                        <li key={subpoint.id} className="dropdown-item">
-                            <a href="#" className="dropdown-link">
+                        <li key={subpoint.id} className={styles["dropdown-item"]}>
+                            <a href="#" className={styles["dropdown-link"]}>
                                 {subpoint.name}
                             </a>
                         </li>
