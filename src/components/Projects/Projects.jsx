@@ -1,31 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './Projects.css';
 import { PROJECTS } from '../../constants/constants';
+import { setQuery, updateFilteredItems } from '../../actions';
+import { filterProjects } from '../../utils/filterProjects';
 
 const DEBOUNCE_DELAY = 300;
 
 export const Projects = () => {
-    const [query, setQuery] = useState('');
-    const [filteredItems, setFilteredItems] = useState(PROJECTS);
+    const dispatch = useDispatch();
+    const query = useSelector((state) => state.query);
+    const filteredItems = useSelector((state) => state.filteredItems);
     const isEmpty = filteredItems.length === 0;
 
     useEffect(() => {
         const handler = setTimeout(() => {
-            const lowerCaseQuery = query.toLowerCase().trim();
-            const results = PROJECTS.filter((item) => {
-                const title = item.name.toLowerCase();
-                const description = item.description.toLowerCase();
-                return title.includes(lowerCaseQuery) || description.includes(lowerCaseQuery);
-            });
-
-            setFilteredItems(results);
+            const results = filterProjects(PROJECTS, query);
+            dispatch(updateFilteredItems(results));
         }, DEBOUNCE_DELAY);
 
         return () => clearTimeout(handler);
-    }, [query]);
+    }, [query, dispatch]);
 
     const handleSearchInputChange = (event) => {
-        setQuery(event.target.value);
+        dispatch(setQuery(event.target.value));
     };
 
     return (
