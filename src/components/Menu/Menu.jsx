@@ -2,6 +2,8 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { MENU } from '../../constants/constants';
 import { MenuItem } from '../MenuItem/MenuItem';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../actions';
 import menuIcon from '../../images/menu.svg';
 import crossIcon from '../../images/cross.svg';
 import styles from './Menu.module.css';
@@ -10,6 +12,7 @@ import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 export const Menu = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [activeItem, setActiveItem] = useState(null);
+    const dispatch = useDispatch();
 
     const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
@@ -20,6 +23,10 @@ export const Menu = () => {
             setActiveItem(point);
         }
     };
+
+    const handleLogout = () => {
+        dispatch(logout());
+      };
 
     return (
         <>
@@ -38,6 +45,10 @@ export const Menu = () => {
                 className={classNames(styles['menu-icon'], { [styles['menu-icon--open']]: isMenuOpen })}
                 onClick={toggleMenu}
                 style={{ backgroundImage: `url(${isMenuOpen ? crossIcon : menuIcon})` }}
+            ></button>
+            <button
+                className={classNames(styles['logout-icon'])}
+                onClick={handleLogout}
             ></button>
         </>
     );
