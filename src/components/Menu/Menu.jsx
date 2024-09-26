@@ -26,7 +26,7 @@ export const Menu = () => {
 
     const handleLogout = () => {
         dispatch(logout());
-      };
+    };
 
     return (
         <>
@@ -42,14 +42,13 @@ export const Menu = () => {
                 <ThemeSwitcher />
             </ul>
             <button
-                className={classNames(styles['menu-icon'], { [styles['menu-icon--open']]: isMenuOpen })}
+                className={classNames(styles['menu-icon'], {
+                    [styles['menu-icon--open']]: isMenuOpen,
+                })}
                 onClick={toggleMenu}
                 style={{ backgroundImage: `url(${isMenuOpen ? crossIcon : menuIcon})` }}
             ></button>
-            <button
-                className={classNames(styles['logout-icon'])}
-                onClick={handleLogout}
-            ></button>
+            <button className={classNames(styles['logout-icon'])} onClick={handleLogout}></button>
         </>
     );
 };

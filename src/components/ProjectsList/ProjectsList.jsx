@@ -28,23 +28,27 @@ export const ProjectsList = () => {
 
     return (
         <section className={styles.projects}>
-            <div className={styles["search-container"]}>
+            <div className={styles['search-container']}>
                 <input
                     type="text"
-                    className={styles["search-input"]}
+                    className={styles['search-input']}
                     value={query}
                     onChange={handleSearchInputChange}
                     placeholder="Search..."
                 />
             </div>
-            {isEmpty && <p className={styles["no-results"]}>No results found</p>}
-            <div className={styles["items-container"]}>
+            {isEmpty && <p className={styles['no-results']}>No results found</p>}
+            <div className={styles['items-container']}>
                 {filteredItems.map((item) => (
                     <div key={item.id} className={styles.item}>
-                        <img className={styles["item-img"]} src={`./images/${item.image}`} alt="Item Icon" />
-                        <div className={styles["item-text"]}>
-                            <h3 className={styles["item-header"]}>{item.name}</h3>
-                            <p className={styles["item-description"]}>{item.description}</p>
+                        <img
+                            className={styles['item-img']}
+                            src={`./images/${item.image}`}
+                            alt="Item Icon"
+                        />
+                        <div className={styles['item-text']}>
+                            <h3 className={styles['item-header']}>{item.name}</h3>
+                            <p className={styles['item-description']}>{item.description}</p>
                         </div>
                     </div>
                 ))}

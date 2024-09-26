@@ -4,14 +4,14 @@ import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 
 export const Projects = () => {
-    return(
+    return (
         <>
             <Header />
-                <main>
-                    <Description />
-                    <ProjectsList />
-                </main>
+            <main>
+                <Description />
+                <ProjectsList />
+            </main>
             <Footer />
         </>
-    )
-}
+    );
+};

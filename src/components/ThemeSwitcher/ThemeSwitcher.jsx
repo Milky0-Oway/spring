@@ -10,16 +10,20 @@ export const ThemeSwitcher = () => {
     };
 
     return (
-        <li className={styles["menu-item"]}>
-            <div className={styles["theme-switcher"]}>
+        <li className={styles['menu-item']}>
+            <div className={styles['theme-switcher']}>
                 <button
                     type="button"
-                    className={classNames(styles['switch-label'], { [styles['switch-label--active']]: isActive })}
+                    className={classNames(styles['switch-label'], {
+                        [styles['switch-label--active']]: isActive,
+                    })}
                     onClick={handleThemeToggle}
                     aria-pressed={isActive}
                 >
                     <span
-                        className={classNames(styles['switch-icon'], { [styles['switch-icon--active']]: isActive })}
+                        className={classNames(styles['switch-icon'], {
+                            [styles['switch-icon--active']]: isActive,
+                        })}
                     />
                 </button>
             </div>

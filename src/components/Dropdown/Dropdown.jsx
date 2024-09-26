@@ -17,18 +17,25 @@ export const Dropdown = ({
             })}
         >
             {subpoints.map((subpoint) => (
-                <li key={subpoint.id} className={styles["dropdown-item"]}>
-                    <a className={styles["dropdown-link"]} href="#">
+                <li key={subpoint.id} className={styles['dropdown-item']}>
+                    <a className={styles['dropdown-link']} href="#">
                         {subpoint.name}
                     </a>
                 </li>
             ))}
             {additional && (
                 <>
-                    <li className={classNames(styles["dropdown-item"], styles["dropdown-item--spacing"])}>{additionalPoint}</li>
+                    <li
+                        className={classNames(
+                            styles['dropdown-item'],
+                            styles['dropdown-item--spacing'],
+                        )}
+                    >
+                        {additionalPoint}
+                    </li>
                     {additionalSubpoints.map((subpoint) => (
-                        <li key={subpoint.id} className={styles["dropdown-item"]}>
-                            <a href="#" className={styles["dropdown-link"]}>
+                        <li key={subpoint.id} className={styles['dropdown-item']}>
+                            <a href="#" className={styles['dropdown-link']}>
                                 {subpoint.name}
                             </a>
                         </li>

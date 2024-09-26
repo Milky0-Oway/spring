@@ -1,10 +1,10 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../actions';
 import styles from './Login.module.css';
-import { useFormInput } from "../../hooks/useFormInput";
-import { Button } from "../../components/Button/Button";
+import { useFormInput } from '../../hooks/useFormInput';
+import { Button } from '../../components/Button/Button';
 
 export const Login = () => {
     const username = useFormInput('');
@@ -16,7 +16,7 @@ export const Login = () => {
     const handleLogin = (event) => {
         event.preventDefault();
 
-        if(username.value === 'admin' && password.value === '1234') {
+        if (username.value === 'admin' && password.value === '1234') {
             dispatch(login());
             navigate('/');
         } else {
@@ -24,7 +24,7 @@ export const Login = () => {
         }
     };
 
-    return(
+    return (
         <div className={styles.login}>
             <div className={styles['login-container']}>
                 <h2 className={styles['login-header']}>Welcome back!</h2>
@@ -52,5 +52,5 @@ export const Login = () => {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};

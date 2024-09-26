@@ -9,8 +9,11 @@ export function App() {
     return (
         <Router>
             <Routes>
-                <Route path='/' element={isAuthenticated ? <Projects /> : <Navigate to="/login" />}/>
-                <Route path='/login' element={<Login />}/>
+                <Route
+                    path="/"
+                    element={isAuthenticated ? <Projects /> : <Navigate to="/login" />}
+                />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </Router>
     );

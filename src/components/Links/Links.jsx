@@ -4,15 +4,17 @@ import classNames from 'classnames';
 
 export const Links = () => {
     return (
-        <div className={styles["links-container"]}>
+        <div className={styles['links-container']}>
             {FOOTER_LINKS.map((linkList) => (
-                <div key={linkList.id} className={styles["links-wrapper"]}>
+                <div key={linkList.id} className={styles['links-wrapper']}>
                     {linkList.array.map((links) => (
                         <ul key={links.id} className={styles.links}>
                             {links.array.map((linkInfo) => (
-                                <li key={linkInfo.id} className={styles["link-item"]}>
+                                <li key={linkInfo.id} className={styles['link-item']}>
                                     <a
-                                        className={classNames(styles.link, {[styles['link--bold']]: linkInfo.bold})}
+                                        className={classNames(styles.link, {
+                                            [styles['link--bold']]: linkInfo.bold,
+                                        })}
                                         href="#"
                                     >
                                         {linkInfo.name}

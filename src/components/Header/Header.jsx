@@ -5,7 +5,7 @@ import springLogo from '../../images/spring-logo.png';
 export const Header = () => {
     return (
         <header className={styles.header}>
-            <img src={springLogo} alt="Logo" className={styles["header-img"]} />
+            <img src={springLogo} alt="Logo" className={styles['header-img']} />
             <nav className={styles.nav}>
                 <Menu />
             </nav>

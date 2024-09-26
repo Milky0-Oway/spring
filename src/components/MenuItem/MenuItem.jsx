@@ -21,12 +21,17 @@ export const MenuItem = ({ item, isActive, onToggle }) => {
 
     return (
         <li
-            className={styles["menu-item"]}
+            className={styles['menu-item']}
             onClick={handleClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <a className={classNames(styles['menu-link'], { [styles['menu-link--active']]: isActive })} href="#">
+            <a
+                className={classNames(styles['menu-link'], {
+                    [styles['menu-link--active']]: isActive,
+                })}
+                href="#"
+            >
                 {item.point}
             </a>
             <Dropdown
