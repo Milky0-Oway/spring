@@ -7,29 +7,23 @@ import { filterProjects } from '../../utils/filterProjects';
 import { ProjectsList } from '../ProjectsList/ProjectsList';
 import { SearchInput } from '../SearchInput/SearchInput';
 
-const DEBOUNCE_DELAY = 300;
-
 export const ProjectsContainer = () => {
     const dispatch = useDispatch();
     const query = useSelector((state) => state.projects.query);
     const filteredItems = useSelector((state) => state.projects.filteredItems);
 
     useEffect(() => {
-        const handler = setTimeout(() => {
-            const results = filterProjects(PROJECTS, query);
-            dispatch(updateFilteredItems(results));
-        }, DEBOUNCE_DELAY);
-
-        return () => clearTimeout(handler);
+        const results = filterProjects(PROJECTS, query);
+        dispatch(updateFilteredItems(results));
     }, [query, dispatch]);
 
-    const handleSearchInputChange = (event) => {
-        dispatch(setQuery(event.target.value));
+    const handleSearchInputChange = (debouncedQuery) => {
+        dispatch(setQuery(debouncedQuery));
     };
 
     return (
         <section className={styles.projects}>
-            <SearchInput query={query} onInputChange={handleSearchInputChange} />
+            <SearchInput onDebouncedInputChange={handleSearchInputChange} />
             <ProjectsList filteredItems={filteredItems} />
         </section>
     );
