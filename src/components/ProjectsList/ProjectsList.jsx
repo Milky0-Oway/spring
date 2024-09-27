@@ -1,9 +1,8 @@
 import styles from './ProjectsList.module.css';
 import { Project } from '../Project/Project';
 
-
 export const ProjectsList = ({ filteredItems }) => {
-   const isEmpty = filteredItems.length === 0;
+    const isEmpty = filteredItems.length === 0;
 
     return (
         <section className={styles.projects}>

@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../actions';
 import styles from './Login.module.css';
 import { useFormInput } from '../../hooks/useFormInput';
 import { Button } from '../../components/Button/Button';
+import { navigate } from '../../router';
 
 export const Login = () => {
     const username = useFormInput('');
     const password = useFormInput('');
     const [error, setError] = useState('');
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleLogin = (event) => {
         event.preventDefault();
