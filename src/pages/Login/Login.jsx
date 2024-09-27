@@ -15,7 +15,10 @@ export const Login = () => {
     const handleLogin = (event) => {
         event.preventDefault();
 
-        if (username.value === 'admin' && password.value === '1234') {
+        const envLogin = process.env.REACT_APP_LOGIN;
+        const envPassword = process.env.REACT_APP_PASSWORD;
+
+        if (username.value === envLogin && password.value === envPassword) {
             dispatch(login());
             navigate('/');
         } else {
