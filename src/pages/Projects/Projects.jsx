@@ -1,5 +1,5 @@
 import { Description } from '../../components/Description/Description';
-import { ProjectsList } from '../../components/ProjectsList/ProjectsList';
+import { ProjectsContainer } from '../../components/ProjectsContainer/ProjectsContainer';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 
@@ -9,7 +9,7 @@ export const Projects = () => {
             <Header />
             <main>
                 <Description />
-                <ProjectsList />
+                <ProjectsContainer />
             </main>
             <Footer />
         </>
