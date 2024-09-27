@@ -1,0 +1,26 @@
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.no-results {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .items-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+}

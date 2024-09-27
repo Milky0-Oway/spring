@@ -1,11 +1,11 @@
 import { Button } from '../Button/Button';
-import './Newsletter.css';
+import styles from './Newsletter.module.css';
 
 export const Newsletter = () => {
     return (
-        <div className="newsletter">
-            <h1 className="newsletter-header">Get the Spring newsletter</h1>
-            <p className="newsletter-text">Stay connected with the Spring newsletter</p>
+        <div className={styles.newsletter}>
+            <h1 className={styles['newsletter-header']}>Get the Spring newsletter</h1>
+            <p className={styles['newsletter-text']}>Stay connected with the Spring newsletter</p>
             <Button>Subscribe</Button>
         </div>
     );

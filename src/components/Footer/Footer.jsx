@@ -1,4 +1,4 @@
-import './Footer.css';
+import styles from './Footer.module.css';
 import { Links } from '../Links/Links';
 import { Newsletter } from '../Newsletter/Newsletter';
 import springLogo from '../../images/spring-logo.png';
@@ -8,41 +8,41 @@ import x from '../../images/x.svg';
 
 export const Footer = () => {
     return (
-        <footer className="footer">
-            <div className="container">
+        <footer className={styles.footer}>
+            <div className={styles.container}>
                 <Links />
                 <Newsletter />
             </div>
-            <div className="social-media-container">
+            <div className={styles['social-media-container']}>
                 <img src={springLogo} alt="Logo" />
-                <div className="social-media">
-                    <img src={youtube} alt="Youtube Logo" className="social-media-img" />
-                    <img src={github} alt="Github Logo" className="social-media-img" />
-                    <img src={x} alt="X Logo" className="social-media-img" />
+                <div className={styles['social-media']}>
+                    <img src={youtube} alt="Youtube Logo" className={styles['social-media-img']} />
+                    <img src={github} alt="Github Logo" className={styles['social-media-img']} />
+                    <img src={x} alt="X Logo" className={styles['social-media-img']} />
                 </div>
             </div>
-            <p className="footer-text-primary">
+            <p className={styles['footer-text-primary']}>
                 Copyright © 2005 - 2024 Broadcom. All Rights Reserved. The term
                 &quot;Broadcom&quot; refers to Broadcom Inc. and/or its subsidiaries.
             </p>
-            <div className="footer-links">
-                <a href="#" className="footer-link">
+            <div className={styles['footer-links']}>
+                <a href="#" className={styles['footer-link']}>
                     Terms of Use
                 </a>
                 •
-                <a href="#" className="footer-link">
+                <a href="#" className={styles['footer-link']}>
                     Privacy
                 </a>
                 •
-                <a href="#" className="footer-link">
+                <a href="#" className={styles['footer-link']}>
                     Trademark Guidelines
                 </a>
                 •
-                <a href="#" className="footer-link">
+                <a href="#" className={styles['footer-link']}>
                     Your California Privacy Rights
                 </a>
             </div>
-            <p className="footer-text-secondary">
+            <p className={styles['footer-text-secondary']}>
                 Apache®, Apache Tomcat®, Apache Kafka®, Apache Cassandra™, and Apache Geode™
                 are trademarks or registered trademarks of the Apache Software Foundation in the
                 United States and/or other countries. Java™, Java™ SE, Java™ EE, and OpenJDK™

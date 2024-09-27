@@ -17,6 +17,18 @@
     border: none;
 }
 
+.logout-icon {
+    margin-left: 10px;
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-image: url('../../images/logout.svg');
+}
+
 @media (max-width: 1400px) {
     .menu {
         width: 800px;

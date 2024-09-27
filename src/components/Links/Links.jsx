@@ -1,17 +1,20 @@
-import './Links.css';
+import styles from './Links.module.css';
 import { FOOTER_LINKS } from '../../constants/constants';
+import classNames from 'classnames';
 
 export const Links = () => {
     return (
-        <div className="links-container">
+        <div className={styles['links-container']}>
             {FOOTER_LINKS.map((linkList) => (
-                <div key={linkList.id} className="links-wrapper">
+                <div key={linkList.id} className={styles['links-wrapper']}>
                     {linkList.array.map((links) => (
-                        <ul key={links.id} className="links">
+                        <ul key={links.id} className={styles.links}>
                             {links.array.map((linkInfo) => (
-                                <li key={linkInfo.id} className="link-item">
+                                <li key={linkInfo.id} className={styles['link-item']}>
                                     <a
-                                        className={`link ${linkInfo.bold ? 'link--bold' : ''}`}
+                                        className={classNames(styles.link, {
+                                            [styles['link--bold']]: linkInfo.bold,
+                                        })}
                                         href="#"
                                     >
                                         {linkInfo.name}

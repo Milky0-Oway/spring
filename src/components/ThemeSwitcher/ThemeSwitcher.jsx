@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './ThemeSwitcher.css';
+import styles from './ThemeSwitcher.module.css';
 import classNames from 'classnames';
 
 export const ThemeSwitcher = () => {
@@ -10,16 +10,20 @@ export const ThemeSwitcher = () => {
     };
 
     return (
-        <li className="menu-item">
-            <div className="theme-switcher">
+        <li className={styles['menu-item']}>
+            <div className={styles['theme-switcher']}>
                 <button
                     type="button"
-                    className={classNames('switch-label', { 'switch-label--active': isActive })}
+                    className={classNames(styles['switch-label'], {
+                        [styles['switch-label--active']]: isActive,
+                    })}
                     onClick={handleThemeToggle}
                     aria-pressed={isActive}
                 >
                     <span
-                        className={classNames('switch-icon', { 'switch-icon--active': isActive })}
+                        className={classNames(styles['switch-icon'], {
+                            [styles['switch-icon--active']]: isActive,
+                        })}
                     />
                 </button>
             </div>
