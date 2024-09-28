@@ -12,17 +12,28 @@ export const Login = () => {
     const [error, setError] = useState('');
     const dispatch = useDispatch();
 
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
-        const envLogin = process.env.REACT_APP_LOGIN;
-        const envPassword = process.env.REACT_APP_PASSWORD;
+        const loginData = { login: username, password: password };
 
-        if (username.value === envLogin && password.value === envPassword) {
-            dispatch(login());
-            navigate('/');
-        } else {
-            setError('Incorrect username or password');
+        try {
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginData),
+            });
+
+            if (response.status === 200) {
+                dispatch(login());
+                navigate('/');
+            } else {
+                setError('Incorrect username or password');
+            }
+        } catch (error) {
+            setError('Error during login ' + error);
         }
     };
 
