@@ -1,41 +1,31 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login } from '../../actions';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../store/actions';
 import styles from './Login.module.css';
 import { useFormInput } from '../../hooks/useFormInput';
 import { Button } from '../../components/Button/Button';
-import { navigate } from '../../router';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const username = useFormInput('');
     const password = useFormInput('');
-    const [error, setError] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const authError = useSelector((state) => state.auth.error);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
     const handleLogin = async (event) => {
         event.preventDefault();
-
-        const loginData = { login: username, password: password };
-
-        try {
-            const response = await fetch('http://localhost:5000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(loginData),
-            });
-
-            if (response.status === 200) {
-                dispatch(login());
-                navigate('/');
-            } else {
-                setError('Incorrect username or password');
-            }
-        } catch (error) {
-            setError('Error during login ' + error);
-        }
+        const loginData = { login: username.value, password: password.value };
+        dispatch(login(loginData));
     };
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated, navigate]);
 
     return (
         <div className={styles.login}>
@@ -60,7 +50,7 @@ export const Login = () => {
                             required
                         />
                     </div>
-                    {error && <p className={styles.error}>{error}</p>}
+                    {authError && <p className={styles.error}>{authError}</p>}
                     <Button type="submit">Login</Button>
                 </form>
             </div>

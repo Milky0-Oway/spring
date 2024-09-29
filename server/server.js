@@ -16,7 +16,8 @@ const envPassword = process.env.PASSWORD;
 
 app.post("/login", (req, res) => {
   const { login, password } = req.body;
-  if (login.value === envLogin && password.value === envPassword) {
+
+  if (login === envLogin && password === envPassword) {
     res.status(200).json({ message: "Login successful" });
   } else {
     res.status(401).json({ message: "Invalid credentials" });
@@ -24,7 +25,7 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/projects", (req, res) => {
-  const query = req.query.q.toLowerCase().trim() || "";
+  const query = req.query.q ? req.query.q.toLowerCase().trim() : "";
 
   const filteredProjects = PROJECTS.filter((project) => {
     const title = project.name.toLowerCase();

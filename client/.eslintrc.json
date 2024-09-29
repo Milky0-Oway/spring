@@ -2,9 +2,15 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jest/recommended"
+    ],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -14,7 +20,7 @@
         "sourceType": "module",
         "requireConfigFile": false
     },
-    "plugins": ["react", "react-hooks"],
+    "plugins": ["react", "react-hooks", "jest"],
     "rules": {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",

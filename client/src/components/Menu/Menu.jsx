@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { MENU } from '../../constants/constants';
 import { MenuItem } from '../MenuItem/MenuItem';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../actions';
+import { logout } from '../../store/actions';
 import menuIcon from '../../images/menu.svg';
 import crossIcon from '../../images/cross.svg';
 import styles from './Menu.module.css';
