@@ -5,26 +5,26 @@ import { thunk } from 'redux-thunk';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-global.fetch = jest.fn((_, options) => {
-    const { login, password } = JSON.parse(options.body);
-
-    if (login === 'admin' && password === '1234') {
-        return Promise.resolve({
-            status: 200,
-            json: () => Promise.resolve({ message: 'Login successful' }),
-        });
-    } else {
-        return Promise.resolve({
-            status: 401,
-            json: () => Promise.resolve({ message: 'Invalid credentials' }),
-        });
-    }
-});
-
 describe('login action', () => {
     let store;
 
     beforeEach(() => {
+        global.fetch = jest.fn((_, options) => {
+            const { login, password } = JSON.parse(options.body);
+
+            if (login === 'admin' && password === '1234') {
+                return Promise.resolve({
+                    status: 200,
+                    json: () => Promise.resolve({ message: 'Login successful' }),
+                });
+            } else {
+                return Promise.resolve({
+                    status: 401,
+                    json: () => Promise.resolve({ message: 'Invalid credentials' }),
+                });
+            }
+        });
+
         store = mockStore({ auth: { isAuthenticated: false, error: null } });
     });
 
