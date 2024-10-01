@@ -43,4 +43,4 @@ const PROJECTS = [
     },
 ];
 
-module.exports = PROJECTS;
+module.exports = { PROJECTS };

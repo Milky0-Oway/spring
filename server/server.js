@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const PROJECTS = require('./projects');
+const { PROJECTS } = require('./projects');
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/projects', (req, res) => {
-    const query = req.query.q ? req.query.q.toLowerCase().trim() : '';
+    const query = req.query.searchQuery ? req.query.searchQuery.toLowerCase().trim() : '';
 
     const filteredProjects = PROJECTS.filter((project) => {
         const title = project.name.toLowerCase();
