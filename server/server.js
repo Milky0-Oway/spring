@@ -14,6 +14,8 @@ app.use(cors());
 const envLogin = process.env.LOGIN;
 const envPassword = process.env.PASSWORD;
 
+let unusedVariable = 39;
+
 app.post('/login', (req, res) => {
     const { login, password } = req.body;
 
