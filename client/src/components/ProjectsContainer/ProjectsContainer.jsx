@@ -11,7 +11,9 @@ export const ProjectsContainer = () => {
     useEffect(() => {
         const fetchProjects = async (searchQuery) => {
             try {
-                const response = await fetch(`http://localhost:5000/projects?searchQuery=${searchQuery}`);
+                const response = await fetch(
+                    `http://localhost:5000/projects?searchQuery=${searchQuery}`,
+                );
                 const projects = await response.json();
                 setFilteredItems(projects);
             } catch (error) {
