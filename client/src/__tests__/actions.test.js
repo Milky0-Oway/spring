@@ -9,13 +9,25 @@ describe('login action', () => {
     let store;
 
     beforeEach(() => {
+        global.localStorage = {
+            getItem: jest.fn(),
+            setItem: jest.fn(),
+            removeItem: jest.fn(),
+            clear: jest.fn(),
+        };
+
         global.fetch = jest.fn((_, options) => {
             const { login, password } = JSON.parse(options.body);
 
             if (login === 'admin' && password === '1234') {
                 return Promise.resolve({
                     status: 200,
-                    json: () => Promise.resolve({ message: 'Login successful' }),
+                    json: () =>
+                        Promise.resolve({
+                            message: 'Login successful',
+                            accessToken: 'mockAccessToken',
+                            refreshToken: 'mockRefreshToken',
+                        }),
                 });
             } else {
                 return Promise.resolve({
@@ -35,7 +47,14 @@ describe('login action', () => {
     it('dispatches LOGIN_SUCCESS when login is successful', async () => {
         const expectedActions = [
             { type: 'LOGIN_REQUEST' },
-            { type: 'LOGIN_SUCCESS', payload: { message: 'Login successful' } },
+            {
+                type: 'LOGIN_SUCCESS',
+                payload: {
+                    message: 'Login successful',
+                    accessToken: 'mockAccessToken',
+                    refreshToken: 'mockRefreshToken',
+                },
+            },
         ];
 
         await store.dispatch(login({ login: 'admin', password: '1234' }));
@@ -46,7 +65,7 @@ describe('login action', () => {
     it('dispatches LOGIN_FAILURE when credentials are invalid', async () => {
         const expectedActions = [
             { type: 'LOGIN_REQUEST' },
-            { type: 'LOGIN_FAILURE', error: 'Invalid credentials' },
+            { type: 'LOGIN_FAILURE', error: { general: 'Invalid credentials' } },
         ];
 
         await store.dispatch(login({ login: 'admin', password: '12345' }));

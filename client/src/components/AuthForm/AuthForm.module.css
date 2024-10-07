@@ -1,0 +1,26 @@
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.auth-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.text {
+    margin-top: 15px;
+    margin-bottom: -15px;
+}
+
+.error {
+    color: #7e0e0e;
+    text-align: center;
+    margin-top: 10px;
+}

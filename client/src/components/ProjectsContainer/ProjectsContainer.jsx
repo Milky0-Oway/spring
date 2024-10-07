@@ -10,10 +10,24 @@ export const ProjectsContainer = () => {
 
     useEffect(() => {
         const fetchProjects = async (searchQuery) => {
+            const accessToken = localStorage.getItem('accessToken');
+
             try {
                 const response = await fetch(
                     `http://localhost:5000/projects?searchQuery=${searchQuery}`,
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    },
                 );
+
+                if (response.status === 401) {
+                    throw new Error('Unauthorized. Please login again.');
+                }
+
                 const projects = await response.json();
                 setFilteredItems(projects);
             } catch (error) {
