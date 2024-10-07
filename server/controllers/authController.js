@@ -15,7 +15,7 @@ const generateRefreshToken = (user) => {
     return jwt.sign({ id: user.id }, process.env.JWT_REFRESH_SECRET, { expiresIn: '1d' });
 };
 
-exports.signup = async (req, res) => {
+const signup = async (req, res) => {
     const { username, password, repeatPassword, firstName, lastName, age } = req.body;
 
     let errors = {
@@ -79,7 +79,7 @@ exports.signup = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -98,7 +98,7 @@ exports.login = async (req, res) => {
     }
 };
 
-exports.refreshToken = (req, res) => {
+const refreshToken = (req, res) => {
     const { refreshToken } = req.body;
 
     if (!refreshToken) {
@@ -112,3 +112,5 @@ exports.refreshToken = (req, res) => {
         res.status(200).json({ accessToken: newAccessToken });
     });
 };
+
+module.exports = { signup, login, refreshToken };

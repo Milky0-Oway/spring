@@ -5,7 +5,7 @@ export const ProtectedRoute = ({ component: Component }) => {
     const { isAuthenticated, loading } = useSelector((state) => state.auth);
 
     if (loading) {
-        return <></>;
+        return null;
     }
 
     if (isAuthenticated) {

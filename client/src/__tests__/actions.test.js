@@ -1,6 +1,7 @@
 import { login } from '../store/actions';
 import configureMockStore from 'redux-mock-store';
 import { thunk } from 'redux-thunk';
+import { LOGIN_SUCCESS, LOGIN_REQUEST, LOGIN_FAILURE } from '../store/actionTypes';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -46,9 +47,9 @@ describe('login action', () => {
 
     it('dispatches LOGIN_SUCCESS when login is successful', async () => {
         const expectedActions = [
-            { type: 'LOGIN_REQUEST' },
+            { type: LOGIN_REQUEST },
             {
-                type: 'LOGIN_SUCCESS',
+                type: LOGIN_SUCCESS,
                 payload: {
                     message: 'Login successful',
                     accessToken: 'mockAccessToken',
@@ -64,8 +65,8 @@ describe('login action', () => {
 
     it('dispatches LOGIN_FAILURE when credentials are invalid', async () => {
         const expectedActions = [
-            { type: 'LOGIN_REQUEST' },
-            { type: 'LOGIN_FAILURE', error: { general: 'Invalid credentials' } },
+            { type: LOGIN_REQUEST },
+            { type: LOGIN_FAILURE, error: { general: 'Invalid credentials' } },
         ];
 
         await store.dispatch(login({ login: 'admin', password: '12345' }));

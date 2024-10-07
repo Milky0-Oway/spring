@@ -19,12 +19,8 @@ const authReducer = (state = initialState, action) => {
             return { ...state, isAuthenticated: true, loading: false, error: null };
         case 'LOGIN_FAILURE':
         case 'REGISTER_FAILURE':
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('refreshToken');
             return { ...state, isAuthenticated: false, error: action.error, loading: false };
         case 'LOGOUT':
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('refreshToken');
             return { ...state, isAuthenticated: false, loading: false };
         case 'VALIDATE_TOKEN_FINISHED':
             return { ...state, loading: false };

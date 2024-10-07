@@ -1,5 +1,23 @@
+import {
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    REGISTER_REQUEST,
+    REGISTER_SUCCESS,
+    REGISTER_FAILURE,
+    LOGOUT,
+    RESET,
+    VALIDATE_TOKEN_REQUEST,
+    VALIDATE_TOKEN_FINISHED,
+} from './actionTypes';
+
+const resetLocalStorege = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+};
+
 export const login = (credentials) => async (dispatch) => {
-    dispatch({ type: 'LOGIN_REQUEST' });
+    dispatch({ type: LOGIN_REQUEST });
 
     try {
         const response = await fetch('http://localhost:5000/login', {
@@ -15,25 +33,28 @@ export const login = (credentials) => async (dispatch) => {
         if (response.status === 200) {
             localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('refreshToken', data.refreshToken);
-            dispatch({ type: 'LOGIN_SUCCESS', payload: data });
+            dispatch({ type: LOGIN_SUCCESS, payload: data });
         } else {
-            dispatch({ type: 'LOGIN_FAILURE', error: { general: data.message } });
+            resetLocalStorege();
+            dispatch({ type: LOGIN_FAILURE, error: { general: data.message } });
         }
     } catch (error) {
-        dispatch({ type: 'LOGIN_FAILURE', error: { general: error.message } });
+        resetLocalStorege();
+        dispatch({ type: LOGIN_FAILURE, error: { general: error.message } });
     }
 };
 
-export const logout = () => ({
-    type: 'LOGOUT',
-});
+export const logout = () => (dispatch) => {
+    resetLocalStorege();
+    dispatch({ type: LOGOUT });
+};
 
 export const reset = () => ({
-    type: 'RESET',
+    type: RESET,
 });
 
 export const register = (userData) => async (dispatch) => {
-    dispatch({ type: 'REGISTER_REQUEST' });
+    dispatch({ type: REGISTER_REQUEST });
 
     try {
         const response = await fetch('http://localhost:5000/signup', {
@@ -50,25 +71,29 @@ export const register = (userData) => async (dispatch) => {
             localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('refreshToken', data.refreshToken);
 
-            dispatch({ type: 'REGISTER_SUCCESS', payload: data });
+            dispatch({ type: REGISTER_SUCCESS, payload: data });
         } else if (response.status === 400 && data.errors) {
-            dispatch({ type: 'REGISTER_FAILURE', error: data.errors });
+            resetLocalStorege();
+            dispatch({ type: REGISTER_FAILURE, error: data.errors });
         } else {
-            dispatch({ type: 'REGISTER_FAILURE', error: { general: data.message } });
+            resetLocalStorege();
+            dispatch({ type: REGISTER_FAILURE, error: { general: data.message } });
         }
     } catch (error) {
-        dispatch({ type: 'REGISTER_FAILURE', error: { general: error.message } });
+        resetLocalStorege();
+        dispatch({ type: REGISTER_FAILURE, error: { general: error.message } });
     }
 };
 
 export const validateToken = () => async (dispatch) => {
-    dispatch({ type: 'VALIDATE_TOKEN_REQUEST' });
+    dispatch({ type: VALIDATE_TOKEN_REQUEST });
 
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
 
     if (!accessToken || !refreshToken) {
-        dispatch({ type: 'LOGOUT' });
+        resetLocalStorege();
+        dispatch({ type: LOGOUT });
         return;
     }
 
@@ -82,7 +107,7 @@ export const validateToken = () => async (dispatch) => {
         });
 
         if (response.status === 200) {
-            dispatch({ type: 'LOGIN_SUCCESS' });
+            dispatch({ type: LOGIN_SUCCESS });
         } else if (response.status === 401) {
             const refreshResponse = await fetch('http://localhost:5000/refresh-token', {
                 method: 'POST',
@@ -95,14 +120,16 @@ export const validateToken = () => async (dispatch) => {
             if (refreshResponse.status === 200) {
                 const data = await refreshResponse.json();
                 localStorage.setItem('accessToken', data.accessToken);
-                dispatch({ type: 'LOGIN_SUCCESS' });
+                dispatch({ type: LOGIN_SUCCESS });
             } else {
-                dispatch({ type: 'LOGOUT' });
+                resetLocalStorege();
+                dispatch({ type: LOGOUT });
             }
         }
     } catch (error) {
-        dispatch({ type: 'LOGOUT' });
+        resetLocalStorege();
+        dispatch({ type: LOGOUT });
     } finally {
-        dispatch({ type: 'VALIDATE_TOKEN_FINISHED' });
+        dispatch({ type: VALIDATE_TOKEN_FINISHED });
     }
 };

@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-exports.verifyAccessToken = (req, res, next) => {
+const verifyAccessToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
@@ -16,3 +16,5 @@ exports.verifyAccessToken = (req, res, next) => {
         next();
     });
 };
+
+module.exports = { verifyAccessToken };
