@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug CRA Tests",
+      "name": "Debug Current Test File",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "${workspaceRoot}/client/node_modules/.bin/react-scripts",
@@ -11,11 +11,20 @@
         "--runInBand",
         "--no-cache",
         "--env=jsdom",
-        "--watchAll=false"
+        "--watchAll=false",
+        "${fileBasenameNoExtension}"
       ],
       "cwd": "${workspaceRoot}/client",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/server/server.js",
+      "envFile": "${workspaceFolder}/server/.env"
     }
   ]
 }

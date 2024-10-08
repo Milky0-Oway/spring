@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/actions';
-import styles from './Login.module.css';
+import { register } from '../../store/actions';
+import styles from './Signup.module.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../../components/AuthForm/AuthForm';
 
-export const Login = () => {
+export const Signup = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-    const handleLogin = (loginData) => {
-        dispatch(login(loginData));
+    const handleRegister = (registerData) => {
+        dispatch(register(registerData));
     };
 
     useEffect(() => {
@@ -22,10 +22,10 @@ export const Login = () => {
     }, [isAuthenticated, navigate]);
 
     return (
-        <div className={styles.login}>
-            <div className={styles['login-container']}>
-                <h2 className={styles['login-header']}>Welcome back!</h2>
-                <AuthForm type="login" onSubmit={handleLogin} />
+        <div className={styles.signup}>
+            <div className={styles['signup-container']}>
+                <h2 className={styles['signup-header']}>Welcome!</h2>
+                <AuthForm type="signup" onSubmit={handleRegister} />
             </div>
         </div>
     );
